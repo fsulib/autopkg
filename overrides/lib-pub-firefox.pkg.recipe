@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.pkg.lib-pub-firefox</string>
+	<key>Input</key>
+	<dict>
+		<key>LOCALE</key>
+		<string>en_US</string>
+		<key>NAME</key>
+		<string>lib-pub-firefox</string>
+		<key>RELEASE</key>
+		<string>latest-esr</string>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>edu.fsu.lib.pkg.firefox.pub</string>
+</dict>
+</plist>
