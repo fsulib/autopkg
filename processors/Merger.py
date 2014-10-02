@@ -77,6 +77,6 @@ class Merger(DmgMounter):
 
 
 if __name__ == '__main__':
-    PROCESSOR = Copier()
+    PROCESSOR = Merger()
     PROCESSOR.execute_shell()
 
