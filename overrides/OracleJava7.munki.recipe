@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Identifier</key>
+	<string>local.munki.OracleJava7</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>bin/java</string>
+		<key>NAME</key>
+		<string>lib-all-java</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>description</key>
+			<string>Java SE Runtime Environment 7 enables support for running Java-powered applets and applications.</string>
+			<key>display_name</key>
+			<string>Oracle Java 7</string>
+			<key>minimum_os_version</key>
+			<string>10.7.3</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>uninstall_method</key>
+			<string>uninstall_script</string>
+			<key>uninstall_script</key>
+			<string>#!/bin/sh
+            # From http://www.java.com/en/download/help/mac_uninstall_java.xml
+            rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin
+            pkgutil --forget com.oracle.jre
+            </string>
+            <key>postinstall_script</key>
+            <string>#!/bin/sh
+# Look for the system-level deployment directory and associated files.
+# If the directory is there, kill it, then recreate it and the files.
+depl_dir="/Library/Application Support/Oracle/Java/Deployment"
+depl_conf="${depl_dir}/deployment.config"
+depl_prop="${depl_dir}/deployment.properties"
+depl_excp="${depl_dir}/exception.sites"
+test -d "$depl_dir" &amp;&amp; rm -r "$depl_dir"
+mkdir -p "$depl_dir" &amp;&amp; chmod 755 "$depl_dir"
+touch "$depl_prop" &amp;&amp; chmod 644 "$depl_prop"
+touch "$depl_conf" &amp;&amp; chmod 644 "$depl_conf"
+touch "$depl_excp" &amp;&amp; chmod 644 "$depl_conf"
+# append properties to deployment.config
+while read line
+do
+echo "$line" &gt;&gt; "$depl_conf"
+done &lt;&lt; EOF
+deployment.system.config=file://$depl_prop
+deployment.system.config.mandatory=false
+EOF
+# now append properties to deployment.properties
+while read line
+do
+echo "$line" &gt;&gt;"$depl_prop"
+done &lt;&lt; EOF
+deployment.user.security.exception.sites=file://$depl_excp
+deployment.security.level=MEDIUM
+deployment.expiration.check.enabled=false
+deployment.security.mixcode=HIDE_RUN
+deployment.javaws.shortcut=NEVER
+deployment.javaws.update.timeout=250
+EOF
+# Unload the Updater launchagent, then,
+# in theory, rm-ing the symlink will kill the updater.
+upd_agent="/Library/LaunchAgents/com.oracle.java.Java-Updater.plist"
+launchctl unload "$upd_agent"
+rm "$upd_agent"
+            </string>
+			<key>uninstallable</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>ParentRecipe</key>
+	<string>com.github.autopkg.munki.OracleJava7</string>
+</dict>
+</plist>
