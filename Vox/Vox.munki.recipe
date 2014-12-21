@@ -23,7 +23,7 @@
             <key>category</key>
             <string>Media</string>
             <key>description</key>
-            <string>VOX is a minimal music player. It can play your iTunes library, Soundcloud playlists, or any random folder of audio files. You can also connect it to your last.fm account and track your listening habits.</string>
+            <string>VOX is a minimal music player that handles iTunes libraries, Soundcloud playlists, and random audio files.</string>
             <key>display_name</key>
             <string>Vox</string>
             <key>developer</key>
