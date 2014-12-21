@@ -13,7 +13,7 @@
         <key>MUNKI_REPO_SUBDIR</key>
         <string>bin/Vox</string>
         <key>SPARKLE_FEED_URL</key>
-        <string>http://updates.devmate.com/com.coppertino.xml</string>
+        <string>http://updates.devmate.com/com.coppertino.Vox.xml</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
