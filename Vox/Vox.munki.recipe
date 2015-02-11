@@ -40,7 +40,7 @@
             <array>
                 <dict>
                     <key>destination_path</key>
-                    <string>/Applications</key>
+                    <string>/Applications</string>
                     <key>source_item</key>
                     <string>Vox.app</string>
                 </dict>
