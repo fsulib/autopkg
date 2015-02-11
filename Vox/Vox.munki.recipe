@@ -34,14 +34,29 @@
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
+            <key>installer_type</key>
+            <string>copy_from_dmg</string>
+            <key>items_to_copy</key>
+            <array>
+                <dict>
+                    <key>destination_path</key>
+                    <string>/Applications</key>
+                    <key>source_item</key>
+                    <string>Vox.app</string>
+                </dict>
+            </array>
         </dict>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
     <key>ParentRecipe</key>
-	<string>com.github.fsu-autopkg-recipes.pkg.Vox</string>
+	<string>com.github.fsu-autopkg-recipes.download.Vox</string>
     <key>Process</key>
 	<array>
+        <dict>
+            <key>Processor</key>
+            <string>Unarchiver</string>
+        </dict>
         <dict>
             <key>Processor</key>
             <string>DmgCreator</string>
