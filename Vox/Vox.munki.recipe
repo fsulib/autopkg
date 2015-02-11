@@ -34,8 +34,6 @@
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
-            <key>version</key>
-            <string>%version%</string>
             <key>installer_type</key>
             <string>copy_from_dmg</string>
             <key>items_to_copy</key>
@@ -65,7 +63,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Contents/Info.plist</string>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%.app/Contents/Info.plist</string>
                 <key>plist_version_key</key>
                 <string>CFBundleVersion</string>
             </dict>
@@ -84,6 +82,14 @@
         <dict>
             <key>Processor</key>
             <string>MunkiPkginfoMerger</string>
+            <key>Arguments</key>
+            <dict>
+                <key>additional_pkginfo</key>
+                <dict>
+                    <key>version</key>
+                    <string>%version%</string>
+                </dict>
+            </dict>
         </dict>
         <dict>
             <key>Arguments</key>
@@ -92,6 +98,8 @@
                 <string>%dmg_path%</string>
                 <key>repo_subdirectory</key>
                 <string>%MUNKI_REPO_SUBDIR%</string>
+                <key>version_comparison_key</key>
+                <string>CFBundleVersion</string>
             </dict>
             <key>Processor</key>
             <string>MunkiImporter</string>
