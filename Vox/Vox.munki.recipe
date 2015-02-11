@@ -34,6 +34,8 @@
             <string>%NAME%</string>
             <key>unattended_install</key>
             <true/>
+            <key>version</key>
+            <string>%version%</string>
             <key>installer_type</key>
             <string>copy_from_dmg</string>
             <key>items_to_copy</key>
@@ -56,6 +58,16 @@
         <dict>
             <key>Processor</key>
             <string>Unarchiver</string>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>Versioner</string>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Contents/Info.plist</string>
+                <key>plist_version_key</key>
+                <string>CFBundleVersion</string>
+            </dict>
         </dict>
         <dict>
             <key>Processor</key>
