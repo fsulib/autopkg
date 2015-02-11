@@ -62,6 +62,7 @@
         <dict>
             <key>Processor</key>
             <string>Versioner</string>
+            <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%/Contents/Info.plist</string>
