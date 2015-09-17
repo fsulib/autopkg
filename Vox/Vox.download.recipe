@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads the current release version of Vox.</string>
     <key>Identifier</key>
-    <string>com.github.fsu-autopkg-recipes.download.Vox</string>
+    <string>com.github.fsulib-recipes.download.Vox</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
@@ -28,7 +28,7 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>URLDownloader</string>
+            <string>CURLDownloader</string>
         </dict>
         <dict>
             <key>Processor</key>
